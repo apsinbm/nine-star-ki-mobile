@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { SafeArea, Button, Card, StarCircle } from '../src/components';
 import { Colors, StarColors } from '../src/theme/colors';
@@ -8,6 +8,7 @@ import { getStarMetadata, getCombination } from '../lib/data';
 import { NineStarKiProfile } from '../types';
 
 export default function Results() {
+  const router = useRouter();
   const params = useLocalSearchParams();
 
   let profile: NineStarKiProfile | null = null;
@@ -75,14 +76,57 @@ export default function Results() {
 
         {/* Star Details */}
         <Card>
-          <Text style={styles.sectionTitle}>Your Characteristics</Text>
-          <Text style={styles.subtitle}>{yearStarMeta.name}</Text>
-          <Text style={styles.description}>{yearStarMeta.description}</Text>
+          <Text style={styles.sectionTitle}>Principal Star Details</Text>
+          <Text style={styles.subtitle}>{yearStarMeta.description}</Text>
+          <Text style={styles.label}>Element:</Text>
+          <Text style={styles.description}>{yearStarMeta.element}</Text>
+          <Text style={styles.label}>Direction:</Text>
+          <Text style={styles.description}>{yearStarMeta.direction}</Text>
+          <Text style={styles.label}>Characteristics:</Text>
+          {yearStarMeta.characteristics.map((char, idx) => (
+            <Text key={idx} style={styles.bullet}>• {char}</Text>
+          ))}
         </Card>
+
+        <Card>
+          <Text style={styles.sectionTitle}>Month Star Details</Text>
+          <Text style={styles.subtitle}>{monthStarMeta.description}</Text>
+          <Text style={styles.label}>Element:</Text>
+          <Text style={styles.description}>{monthStarMeta.element}</Text>
+          <Text style={styles.label}>Direction:</Text>
+          <Text style={styles.description}>{monthStarMeta.direction}</Text>
+          <Text style={styles.label}>Characteristics:</Text>
+          {monthStarMeta.characteristics.map((char, idx) => (
+            <Text key={idx} style={styles.bullet}>• {char}</Text>
+          ))}
+        </Card>
+
+        <Card>
+          <Text style={styles.sectionTitle}>Energetic Star Details</Text>
+          <Text style={styles.subtitle}>{energeticStarMeta.description}</Text>
+          <Text style={styles.label}>Element:</Text>
+          <Text style={styles.description}>{energeticStarMeta.element}</Text>
+          <Text style={styles.label}>Direction:</Text>
+          <Text style={styles.description}>{energeticStarMeta.direction}</Text>
+          <Text style={styles.label}>Characteristics:</Text>
+          {energeticStarMeta.characteristics.map((char, idx) => (
+            <Text key={idx} style={styles.bullet}>• {char}</Text>
+          ))}
+        </Card>
+
+        {combination && (
+          <Card>
+            <Text style={styles.sectionTitle}>Your Combined Profile</Text>
+            <Text style={styles.label}>In Healthy Expression:</Text>
+            <Text style={styles.description}>{combination.healthy}</Text>
+            <Text style={[styles.label, { marginTop: Spacing.md }]}>Potential Challenges:</Text>
+            <Text style={styles.description}>{combination.unhealthy}</Text>
+          </Card>
+        )}
 
         <Button
           title="Calculate Another Profile"
-          onPress={() => {}}
+          onPress={() => router.push('/calculator')}
           variant="primary"
         />
       </ScrollView>
@@ -137,5 +181,16 @@ const styles = StyleSheet.create({
     ...Typography.h3,
     color: Colors.error,
     textAlign: 'center',
+  },
+  label: {
+    ...Typography.label,
+    marginTop: Spacing.md,
+    marginBottom: Spacing.sm,
+    fontWeight: '600',
+  },
+  bullet: {
+    ...Typography.body,
+    marginLeft: Spacing.md,
+    marginVertical: Spacing.xs,
   },
 });
