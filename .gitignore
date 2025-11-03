@@ -1,0 +1,66 @@
+# React Native / Expo
+node_modules/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+dist/
+
+# Expo
+.expo/
+.expo-shared/
+
+# Metro bundler
+.metro-cache/
+
+# iOS
+ios/Pods/
+ios/Podfile.lock
+ios/build/
+*.pbxuser
+*.perspectivev3
+*.xcworkspace/xcuserdata/
+
+# Android
+android/local.properties
+android/.gradle/
+android/app/debug/
+android/app/release/
+android/build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.bak
+.cache/
+.parcel-cache/
+.next/
+out/
+.turbo/
+.vercel/
