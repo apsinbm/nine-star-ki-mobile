@@ -65,16 +65,16 @@ export default function Results() {
         <Card>
           <View style={styles.starsContainer}>
             <View style={styles.starColumn}>
-              <StarCircle star={profile.yearStar} label="Principal" />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Main Number</Text>
+              <StarCircle star={profile.yearStar} />
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Main Number</Text>
             </View>
             <View style={styles.starColumn}>
-              <StarCircle star={profile.monthStar} label="Month" />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Emotional Self</Text>
+              <StarCircle star={profile.monthStar} />
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Emotional Self</Text>
             </View>
             <View style={styles.starColumn}>
-              <StarCircle star={profile.energeticStar} label="Energetic" />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Life Challenge</Text>
+              <StarCircle star={profile.energeticStar} />
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Life Challenge</Text>
               <Text style={[styles.descriptiveLabel, { color: colors.text }]}>& Your True Calling</Text>
             </View>
           </View>
