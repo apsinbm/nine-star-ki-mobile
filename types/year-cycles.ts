@@ -17,6 +17,12 @@ export interface YearCycle {
   /** The name/theme of this year */
   name: string;
 
+  /** The element associated with this cycle (Fire, Earth, Metal, Water, Wood) */
+  element: string;
+
+  /** The direction associated with this cycle (North, South, East, West, etc.) */
+  direction: string;
+
   /** The season associated with this year */
   season: string;
 

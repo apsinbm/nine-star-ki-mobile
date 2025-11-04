@@ -7,7 +7,7 @@ import { Spacing } from '../src/theme/spacing';
 import { useTheme } from '../src/context/ThemeContext';
 import { getStarMetadata, getCombination } from '../lib/data';
 import { getCurrentYearCycle } from '../lib/calculator/year-cycle-calculator';
-import { NineStarKiProfile } from '../types';
+import type { NineStarKiProfile, StarNumber } from '../types/nine-star-ki';
 
 export default function Results() {
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function Results() {
   const combination = getCombination(profile.yearStar, profile.monthStar, profile.energeticStar);
 
   // Get the current year cycle for the user
-  const currentYearCycle = getCurrentYearCycle(profile.yearStar, new Date());
+  const currentYearCycle = getCurrentYearCycle(profile.principalStar as StarNumber, new Date());
 
   const formatDate = (dateString: string | Date) => {
     const date = typeof dateString === 'string' ? new Date(dateString) : dateString;
@@ -97,7 +97,7 @@ export default function Results() {
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{yearStarMeta.direction}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
-          {yearStarMeta.characteristics.map((char, idx) => (
+          {yearStarMeta.characteristics.map((char: string, idx: number) => (
             <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
@@ -110,7 +110,7 @@ export default function Results() {
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{monthStarMeta.direction}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
-          {monthStarMeta.characteristics.map((char, idx) => (
+          {monthStarMeta.characteristics.map((char: string, idx: number) => (
             <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
@@ -124,7 +124,7 @@ export default function Results() {
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{energeticStarMeta.direction}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
-          {energeticStarMeta.characteristics.map((char, idx) => (
+          {energeticStarMeta.characteristics.map((char: string, idx: number) => (
             <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
@@ -152,6 +152,22 @@ export default function Results() {
             showSolarYear={true}
             solarYear={profile.solarYear}
           />
+          <TouchableOpacity
+            onPress={() => {
+              router.push({
+                pathname: '/year-cycles',
+                params: {
+                  profile: JSON.stringify(profile),
+                },
+              });
+            }}
+            style={[styles.viewAllButton, { backgroundColor: colors.primary }]}
+            activeOpacity={0.8}
+          >
+            <Text style={[typography.label, { color: colors.background, textAlign: 'center', fontWeight: '600', fontSize: 16 }]}>
+              View All Years in Your Cycle →
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <Card>
@@ -261,6 +277,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     borderRadius: 12,
     marginVertical: Spacing.md,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  viewAllButton: {
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: 12,
+    marginTop: Spacing.md,
     justifyContent: 'center',
     alignItems: 'center',
   },

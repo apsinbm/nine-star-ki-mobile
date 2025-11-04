@@ -59,10 +59,10 @@ export const SeasonColors = {
   Spring: '#10B981',           // Vibrant green
   'Late Spring': '#34D399',    // Light teal
   Summer: '#F59E0B',           // Warm amber
+  'High Summer': '#EF4444',    // Bright red (Fire element)
   'Late Summer': '#D97706',    // Rich gold
   Autumn: '#DC2626',           // Deep red/orange
   'Late Autumn': '#7C2D12',    // Brown/burgundy
-  'Early Winter': '#6366F1',   // Cool indigo
 };
 
 // Seasonal colors for year cycles (dark mode)
@@ -72,8 +72,8 @@ export const DarkSeasonColors = {
   Spring: '#34D399',           // Lighter vibrant green
   'Late Spring': '#6EE7B7',    // Lighter teal
   Summer: '#FBBF24',           // Lighter amber
+  'High Summer': '#F87171',    // Lighter bright red (Fire element)
   'Late Summer': '#F59E0B',    // Lighter gold
   Autumn: '#F87171',           // Lighter red/orange
   'Late Autumn': '#DC2626',    // Lighter brown/burgundy
-  'Early Winter': '#818CF8',   // Lighter indigo
 };

@@ -243,6 +243,27 @@ The YearCycleCard uses a clean, hierarchical design:
 - [x] Seasonal color display for all 9 seasons
 - [x] Integration with Results screen
 - [x] TypeScript type safety
+- [x] Component import/export consistency
+
+## Troubleshooting
+
+### Import Error: "Element type is invalid"
+
+**Issue**: When the app loads, you see a render error: "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined."
+
+**Cause**: Import mismatch between default and named exports. The `Card` component is exported as a default export, but was being imported as a named export in `YearCycleCard.tsx`.
+
+**Solution**:
+Changed line 4 in `src/components/YearCycleCard.tsx` from:
+```typescript
+import { Card } from './Card';  // ❌ Wrong
+```
+to:
+```typescript
+import Card from './Card';  // ✅ Correct
+```
+
+**File**: `src/components/YearCycleCard.tsx:4`
 
 ## Future Enhancements
 

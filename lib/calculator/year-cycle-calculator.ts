@@ -140,3 +140,56 @@ export function getYearCycleTimeline(
     solarYear,
   };
 }
+
+/**
+ * Gets all year cycles for a timeline spanning from birth year to future years
+ *
+ * Generates a complete list of years with their corresponding cycle numbers and data,
+ * useful for displaying a scrollable list of all years in a person's cycle.
+ *
+ * @param principalStar - The person's Principal Star (first number) from 1-9
+ * @param birthYear - The person's birth year (Gregorian calendar)
+ * @param yearsAhead - How many years into the future to include (default: 30)
+ * @returns Array of year cycle entries with calendar year, solar year, cycle number, and cycle data
+ */
+export function getAllYearCycles(
+  principalStar: StarNumber,
+  birthYear: number,
+  yearsAhead: number = 30
+): Array<{
+  calendarYear: number;
+  solarYear: number;
+  cycleNumber: StarNumber;
+  cycleData: YearCycle;
+}> {
+  const currentDate = new Date();
+  const currentCalendarYear = currentDate.getFullYear();
+  const endYear = currentCalendarYear + yearsAhead;
+
+  const cycles: Array<{
+    calendarYear: number;
+    solarYear: number;
+    cycleNumber: StarNumber;
+    cycleData: YearCycle;
+  }> = [];
+
+  // Generate cycles for each year from birth year to end year
+  for (let year = birthYear; year <= endYear; year++) {
+    // For each calendar year, we need to determine the solar year
+    // The solar year spans from Feb 4 of calendar year to Feb 3 of next calendar year
+    const solarYear = year;
+    const cycleNumber = getCycleNumber(principalStar, solarYear);
+    const cycleData = getYearCycleData(cycleNumber);
+
+    if (cycleData) {
+      cycles.push({
+        calendarYear: year,
+        solarYear,
+        cycleNumber,
+        cycleData,
+      });
+    }
+  }
+
+  return cycles;
+}

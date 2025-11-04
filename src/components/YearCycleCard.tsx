@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { YearCycle } from '../../types/year-cycles';
-import { Card } from './Card';
+import Card from './Card';
 import { useTheme } from '../context/ThemeContext';
 import { SeasonColors, DarkSeasonColors } from '../theme/colors';
 import { Typography, getTypography } from '../theme/typography';

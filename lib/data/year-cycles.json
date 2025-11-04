@@ -1,74 +1,92 @@
 [
   {
     "number": 1,
-    "name": "Dream and Regenerate",
+    "name": "Hibernation - Stillness",
+    "element": "Water",
+    "direction": "North",
     "season": "Winter",
     "keywords": ["Rest", "Rebirth", "Imagination", "Intuition"],
     "theme": "Begin a new cycle by turning inward, restoring energy, and envisioning the future.",
-    "guidance": "Pause active pursuits. Focus on creativity, study, and emotional renewal. Avoid forcing outcomes."
+    "guidance": "This is a time of deep rest and renewal, like seeds dormant beneath winter snow. Your energy naturally turns inward after completing the previous nine-year cycle. This year calls for patience and introspection rather than action. Focus on creative pursuits, study, meditation, and dreaming about future possibilities. Avoid forcing outcomes or starting major new projects. Instead, nurture your inner world, restore depleted energy, and allow your intuition to guide you. This quiet time is essential preparation for the active years ahead. Trust that beneath the surface, important transformation is taking place."
   },
   {
     "number": 2,
-    "name": "Organize and Prepare",
+    "name": "Stagnation - Planning",
+    "element": "Earth",
+    "direction": "Southwest",
     "season": "Early Spring",
     "keywords": ["Planning", "Foundation", "Support", "Patience"],
     "theme": "Lay the groundwork for your dreams. Gather allies and resources.",
-    "guidance": "Structure routines, strengthen relationships, and prepare for expansion next year."
+    "guidance": "Energy begins to stir like the first signs of spring, but growth is still slow and methodical. This is a year for careful preparation and laying solid foundations. Focus on organizing your life, structuring routines, and building supportive relationships. Gather the resources, knowledge, and allies you'll need for future ventures. Progress may feel gradual, but every small step matters. Strengthen your home base, clarify your plans, and cultivate patience. This groundwork phase is crucial—rushing ahead without proper preparation would undermine your future success. Accept support from others and work collaboratively toward shared goals."
   },
   {
     "number": 3,
-    "name": "Take Action and Grow",
+    "name": "Rising Energy - \"Take off\"",
+    "element": "Wood",
+    "direction": "East",
     "season": "Spring",
     "keywords": ["Momentum", "Creativity", "Expression", "Opportunity"],
     "theme": "Energy surges forward. Express ideas boldly and take tangible steps.",
-    "guidance": "Pursue new ventures but stay disciplined; avoid impulsive moves."
+    "guidance": "Like spring's explosive growth, your energy rises dramatically this year. After two years of rest and preparation, it's time to take action and pursue your goals with enthusiasm. New opportunities appear, creative ideas flow, and momentum builds naturally. Express yourself boldly, start new ventures, and take risks. However, channel this powerful energy wisely—avoid impulsive decisions or scattering your focus across too many projects. Stay disciplined and focused on your primary objectives. This is an excellent year for launching initiatives, speaking up, and making your presence known. Your natural vitality and optimism attract positive attention and open doors."
   },
   {
     "number": 4,
-    "name": "Adapt and Navigate Change",
+    "name": "Preparation - Growth",
+    "element": "Wood",
+    "direction": "Southeast",
     "season": "Late Spring",
     "keywords": ["Flexibility", "Learning", "Mentorship", "Influence"],
     "theme": "Unpredictability tests stability. Growth continues through adaptability.",
-    "guidance": "Stay steady, communicate clearly, and welcome mentors who appear."
+    "guidance": "This year brings unexpected changes and fluctuations that test your flexibility and resilience. Growth continues, but not in a straight line—be prepared to adapt to shifting circumstances. Communication becomes especially important; express your thoughts clearly and listen carefully to others. Mentors or guides may appear to offer valuable wisdom. Your influence grows through adaptability rather than force. Stay steady amid uncertainty, remain open to learning, and trust that these challenges are strengthening your foundation. Avoid rigid thinking or clinging to outdated plans. Instead, respond fluidly to what life presents while keeping your core values intact."
   },
   {
     "number": 5,
-    "name": "Center and Transform",
+    "name": "Ups and Downs - Stay with it",
+    "element": "Earth",
+    "direction": "Center",
     "season": "Summer",
     "keywords": ["Change", "Power", "Fulfillment", "Turning Point"],
     "theme": "Major shifts bring both endings and powerful beginnings.",
-    "guidance": "Stay centered, care for health, and avoid rash relocation or commitments."
+    "guidance": "This pivotal year marks the center point of your nine-year cycle, often bringing significant transitions and transformative experiences. Expect both ups and downs as old patterns end and new ones emerge. This is a year of powerful change that may feel chaotic or destabilizing at times. Stay centered and grounded by maintaining healthy routines and caring for your physical well-being. Avoid making impulsive decisions about major commitments like relocation, marriage, or career changes—these shifts are already happening naturally. Trust the process and recognize that endings create space for meaningful new beginnings. Your personal power increases significantly if you remain balanced amid the changes."
   },
   {
     "number": 6,
-    "name": "Consolidate Power and Purpose",
+    "name": "Growth - Prosperity",
+    "element": "Metal",
+    "direction": "Northwest",
     "season": "Late Summer",
     "keywords": ["Authority", "Responsibility", "Achievement", "Reflection"],
     "theme": "Harvest time—step into leadership and refine your calling.",
-    "guidance": "Accept recognition but remain humble. Reflect on what truly matters."
+    "guidance": "This is a harvest year when your efforts from the previous cycle begin to bear fruit. Recognition, advancement, and increased responsibility come naturally. You're called to step into leadership roles and positions of authority. Success is likely, but it brings new obligations and the need for discipline. Accept recognition graciously while remaining humble. This is also a time for deep reflection on what truly matters to you—refine your purpose and ensure your outer achievements align with your inner values. Make wise decisions about how to use your growing influence. Mentor others and give back generously. The prosperity you experience now is meant to be shared."
   },
   {
     "number": 7,
-    "name": "Celebrate and Appreciate",
+    "name": "Celebration - Abundance",
+    "element": "Metal",
+    "direction": "West",
     "season": "Autumn",
     "keywords": ["Joy", "Beauty", "Gratitude", "Relationships"],
     "theme": "Enjoy rewards, cultivate grace, and share abundance.",
-    "guidance": "Travel, celebrate, and enjoy art. Beware of withdrawing into scarcity thinking."
+    "guidance": "This is a year of sweetness and reward—time to enjoy the fruits of your labor and celebrate life's beauty. Social connections flourish, relationships deepen, and joy comes easily. Travel, creative expression, and appreciation of art and nature bring fulfillment. Share your abundance generously and express gratitude for all you've received. However, guard against complacency or superficiality. Stay engaged with meaningful pursuits even while celebrating. Avoid the temptation to withdraw into fear or scarcity thinking—abundance flows freely when you maintain an open, generous spirit. This pleasant year offers a chance to recharge emotionally and strengthen bonds with loved ones before the introspective period ahead."
   },
   {
     "number": 8,
-    "name": "Transform Within",
+    "name": "Revolution - Reconsider",
+    "element": "Earth",
+    "direction": "Northeast",
     "season": "Late Autumn",
     "keywords": ["Introspection", "Healing", "Metamorphosis", "Patience"],
     "theme": "Inner transformation and quiet regeneration unfold beneath the surface.",
-    "guidance": "Slow down, review priorities, meditate, and avoid major new commitments."
+    "guidance": "As autumn deepens toward winter, this year calls you inward for profound transformation. Like a seed preparing to sprout, important changes are happening beneath the surface, invisible to others. This is not a time for external action or new commitments—instead, focus on inner healing, reflection, and spiritual development. Review your priorities, meditate on your life's direction, and release what no longer serves you. Progress may feel slow or even nonexistent, but trust that essential metamorphosis is taking place. Old wounds heal and outdated patterns dissolve. Patience is crucial—avoid forcing outcomes or rushing the process. This internal work prepares you for the completion and new beginning ahead."
   },
   {
     "number": 9,
-    "name": "Complete and Illuminate",
-    "season": "Early Winter",
-    "keywords": ["Closure", "Visibility", "Cleansing", "Transition"],
+    "name": "Fame - \"in the spotlight\"",
+    "element": "Fire",
+    "direction": "South",
+    "season": "High Summer",
+    "keywords": ["Closure", "Visibility", "Recognition", "Transition"],
     "theme": "Endings and illumination lead to renewal. Prepare for the next cycle.",
-    "guidance": "Finish projects, release clutter, and step into the public eye with authenticity."
+    "guidance": "This is the year for you to take the spotlight! It is your time to shine. Fame and rapid development are likely to come your way, as a result of the effort you have put in over the last eight years. This is an excellent year to powerfully promote yourself as you will be noticed, for good or bad reasons. Enjoy the enthusiasm, clarity, optimism and sense of adventure that comes with this year! At the same time, this year brings completion and closure to the nine-year cycle. Finish unfinished projects, release clutter and old commitments, and step authentically into public view. Your visibility increases dramatically—use it wisely to showcase your genuine self and accomplish meaningful goals. Prepare for transition by clearing away what's complete and making space for the new cycle beginning next year. Embrace endings with grace, knowing they lead to fresh beginnings."
   }
 ]
