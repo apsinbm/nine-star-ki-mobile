@@ -77,31 +77,26 @@ export default function YearCyclesScreen() {
           headerLeft: () => (
             <Pressable
               onPress={() => router.back()}
-              style={{
+              style={({ pressed }) => ({
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingLeft: 16,
-              }}
-              android_ripple={{ color: 'transparent' }}
+                opacity: pressed ? 0.5 : 1,
+              })}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
-              {({ pressed }) => (
-                <>
-                  <Ionicons
-                    name="chevron-back"
-                    size={24}
-                    color={colors.text}
-                    style={{ opacity: pressed ? 0.5 : 1 }}
-                  />
-                  <Text style={{
-                    color: colors.text,
-                    fontSize: 17,
-                    marginLeft: 4,
-                    opacity: pressed ? 0.5 : 1
-                  }}>
-                    Back
-                  </Text>
-                </>
-              )}
+              <Ionicons
+                name="chevron-back"
+                size={24}
+                color={colors.text}
+              />
+              <Text style={{
+                color: colors.text,
+                fontSize: 17,
+                marginLeft: 4,
+              }}>
+                Back
+              </Text>
             </Pressable>
           ),
         }}
