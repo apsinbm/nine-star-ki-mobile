@@ -50,6 +50,7 @@ export default function YearCycleDetailScreen() {
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
           headerShadowVisible: false,
+          headerBackTitle: 'Back',
         }}
       />
 
@@ -72,7 +73,7 @@ export default function YearCycleDetailScreen() {
         {/* Large cycle number badge */}
         <View style={styles.badgeContainer}>
           <View style={[styles.largeBadge, { backgroundColor: seasonColor }]}>
-            <Text style={[typography.h1, { color: '#FFFFFF', fontSize: 56, fontWeight: 'bold' }]}>
+            <Text style={{ color: '#FFFFFF', fontSize: 48, fontWeight: 'bold' }}>
               {cycleNumber}
             </Text>
           </View>

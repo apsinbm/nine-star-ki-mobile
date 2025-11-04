@@ -75,7 +75,7 @@ export function YearCycleListItem({
 
       {/* Badge with cycle number */}
       <View style={[styles.badge, { backgroundColor: seasonColor }]}>
-        <Text style={[typography.h3, { color: '#FFFFFF', fontSize: 18 }]}>
+        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '600' }}>
           {cycleNumber}
         </Text>
       </View>

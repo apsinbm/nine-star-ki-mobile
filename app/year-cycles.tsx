@@ -72,6 +72,7 @@ export default function YearCyclesScreen() {
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
           headerShadowVisible: false,
+          headerBackTitle: 'Back',
         }}
       />
 

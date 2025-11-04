@@ -32,7 +32,7 @@ export function YearCycleCard({ cycle, showSolarYear, solarYear }: YearCycleCard
       {/* Header with Year Number and Name */}
       <View style={styles.header}>
         <View style={[styles.yearBadge, { backgroundColor: seasonColor }]}>
-          <Text style={[typography.h2, { color: '#FFFFFF' }]}>
+          <Text style={{ color: '#FFFFFF', fontSize: 28, fontWeight: 'bold' }}>
             {cycle.number}
           </Text>
         </View>
