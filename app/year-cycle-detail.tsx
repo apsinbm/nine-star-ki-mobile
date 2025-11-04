@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../src/context/ThemeContext';
@@ -54,19 +54,34 @@ export default function YearCycleDetailScreen() {
           headerTintColor: colors.text,
           headerShadowVisible: false,
           headerLeft: () => (
-            <TouchableOpacity
+            <Pressable
               onPress={() => router.back()}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingLeft: 16,
-                backgroundColor: 'transparent',
               }}
-              activeOpacity={0.6}
+              android_ripple={{ color: 'transparent' }}
             >
-              <Ionicons name="chevron-back" size={24} color={colors.text} />
-              <Text style={{ color: colors.text, fontSize: 17, marginLeft: 4 }}>Back</Text>
-            </TouchableOpacity>
+              {({ pressed }) => (
+                <>
+                  <Ionicons
+                    name="chevron-back"
+                    size={24}
+                    color={colors.text}
+                    style={{ opacity: pressed ? 0.5 : 1 }}
+                  />
+                  <Text style={{
+                    color: colors.text,
+                    fontSize: 17,
+                    marginLeft: 4,
+                    opacity: pressed ? 0.5 : 1
+                  }}>
+                    Back
+                  </Text>
+                </>
+              )}
+            </Pressable>
           ),
         }}
       />
