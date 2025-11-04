@@ -56,7 +56,13 @@ export default function YearCycleDetailScreen() {
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => router.back()}
-              style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 16 }}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 16,
+                backgroundColor: 'transparent',
+              }}
+              activeOpacity={0.6}
             >
               <Ionicons name="chevron-back" size={24} color={colors.text} />
               <Text style={{ color: colors.text, fontSize: 17, marginLeft: 4 }}>Back</Text>
