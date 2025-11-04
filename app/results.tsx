@@ -161,11 +161,11 @@ export default function Results() {
                 },
               });
             }}
-            style={[styles.viewAllButton, { backgroundColor: colors.primary }]}
+            style={[styles.viewAllButton, { backgroundColor: colors.accent }]}
             activeOpacity={0.8}
           >
-            <Text style={[typography.label, { color: colors.background, textAlign: 'center', fontWeight: '600', fontSize: 16 }]}>
-              View All Years in Your Cycle →
+            <Text style={[typography.label, { color: '#FFFFFF', textAlign: 'center', fontWeight: '600', fontSize: 16 }]}>
+              View All Years in Your Cycle
             </Text>
           </TouchableOpacity>
         </View>

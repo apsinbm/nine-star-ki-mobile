@@ -68,6 +68,7 @@ export default function YearCyclesScreen() {
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <Stack.Screen
         options={{
+          headerShown: true,
           title: 'Yearly Cycles',
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
