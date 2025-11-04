@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import { View, Text, FlatList, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { NineStarKiProfile } from '../types/nine-star-ki';
 import { getAllYearCycles, getCurrentSolarYear } from '../lib/calculator/year-cycle-calculator';
 import { YearCycleListItem } from '../src/components/YearCycleListItem';
@@ -73,9 +74,15 @@ export default function YearCyclesScreen() {
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
           headerShadowVisible: false,
-          headerBackTitle: 'Back',
-          headerBackTitleVisible: true,
-          headerBackButtonMenuEnabled: false,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 16 }}
+            >
+              <Ionicons name="chevron-back" size={24} color={colors.text} />
+              <Text style={{ color: colors.text, fontSize: 17, marginLeft: 4 }}>Back</Text>
+            </TouchableOpacity>
+          ),
         }}
       />
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
-import { useLocalSearchParams, Stack } from 'expo-router';
+import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../src/context/ThemeContext';
 import { SeasonColors, DarkSeasonColors } from '../src/theme/colors';
 import { getTypography } from '../src/theme/typography';
@@ -17,6 +18,7 @@ import { Spacing } from '../src/theme/spacing';
  */
 export default function YearCycleDetailScreen() {
   const params = useLocalSearchParams();
+  const router = useRouter();
   const { isDarkMode, colors } = useTheme();
   const typography = getTypography(colors);
 
@@ -51,9 +53,15 @@ export default function YearCycleDetailScreen() {
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
           headerShadowVisible: false,
-          headerBackTitle: 'Back',
-          headerBackTitleVisible: true,
-          headerBackButtonMenuEnabled: false,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 16 }}
+            >
+              <Ionicons name="chevron-back" size={24} color={colors.text} />
+              <Text style={{ color: colors.text, fontSize: 17, marginLeft: 4 }}>Back</Text>
+            </TouchableOpacity>
+          ),
         }}
       />
 
