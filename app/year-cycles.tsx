@@ -74,6 +74,8 @@ export default function YearCyclesScreen() {
           headerTintColor: colors.text,
           headerShadowVisible: false,
           headerBackTitle: 'Back',
+          headerBackTitleVisible: true,
+          headerBackButtonMenuEnabled: false,
         }}
       />
 
