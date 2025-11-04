@@ -1,5 +1,5 @@
 import { Pressable, Text, StyleSheet, ViewStyle } from 'react-native';
-import { Colors } from '../theme/colors';
+import { useTheme } from '../context/ThemeContext';
 import { Spacing } from '../theme/spacing';
 
 interface ButtonProps {
@@ -8,6 +8,7 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary';
   style?: ViewStyle;
   disabled?: boolean;
+  accessibilityLabel?: string;
 }
 
 export default function Button({
@@ -16,22 +17,29 @@ export default function Button({
   variant = 'primary',
   style,
   disabled,
+  accessibilityLabel,
 }: ButtonProps) {
+  const { colors } = useTheme();
   const isPrimary = variant === 'primary';
 
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
+      accessibilityLabel={accessibilityLabel || title}
       style={({ pressed }) => [
         styles.button,
-        isPrimary ? styles.primary : styles.secondary,
+        {
+          backgroundColor: isPrimary ? colors.accent : colors.surface,
+          borderColor: colors.border,
+          borderWidth: isPrimary ? 0 : 1,
+        },
         pressed && styles.pressed,
         disabled && styles.disabled,
         style,
       ]}
     >
-      <Text style={[styles.text, isPrimary ? styles.primaryText : styles.secondaryText]}>
+      <Text style={[styles.text, { color: isPrimary ? '#FFFFFF' : colors.primary }]}>
         {title}
       </Text>
     </Pressable>
@@ -44,18 +52,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.lg,
     borderRadius: 8,
     alignItems: 'center',
-    minHeight: 48,
-  },
-  primary: {
-    backgroundColor: Colors.primary,
-  },
-  secondary: {
-    backgroundColor: Colors.surface,
-    borderWidth: 1,
-    borderColor: Colors.border,
+    minHeight: 52,
+    justifyContent: 'center',
   },
   pressed: {
-    opacity: 0.7,
+    opacity: 0.8,
   },
   disabled: {
     opacity: 0.5,
@@ -63,11 +64,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: '600',
-  },
-  primaryText: {
-    color: Colors.background,
-  },
-  secondaryText: {
-    color: Colors.primary,
+    lineHeight: 20,
   },
 });

@@ -1,6 +1,6 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from '../theme/colors';
+import { useTheme } from '../context/ThemeContext';
 import { Spacing } from '../theme/spacing';
 
 interface SafeAreaProps {
@@ -9,8 +9,10 @@ interface SafeAreaProps {
 }
 
 export default function SafeArea({ children, style }: SafeAreaProps) {
+  const { colors } = useTheme();
+
   return (
-    <SafeAreaView style={[styles.container, style]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }, style]}>
       {children}
     </SafeAreaView>
   );
@@ -19,8 +21,6 @@ export default function SafeArea({ children, style }: SafeAreaProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-    paddingHorizontal: Spacing.md,
     paddingTop: Spacing.md,
   },
 });

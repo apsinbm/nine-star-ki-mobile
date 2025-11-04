@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { ScrollView, View, Text, StyleSheet, Alert, Platform, ActivityIndicator } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { SafeArea, Button, Card } from '../src/components';
-import { Colors } from '../src/theme/colors';
-import { Typography } from '../src/theme/typography';
+import { useTheme } from '../src/context/ThemeContext';
+import { getTypography } from '../src/theme/typography';
 import { Spacing } from '../src/theme/spacing';
 import { calculateProfile } from '../lib/calculator';
 
 export default function Calculator() {
   const router = useRouter();
+  const { colors } = useTheme();
+  const typography = getTypography(colors);
   const [birthDate, setBirthDate] = useState(new Date(2000, 0, 1));
   const [isCalculating, setIsCalculating] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -49,17 +51,17 @@ export default function Calculator() {
 
   return (
     <SafeArea>
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.header}>
-          <Text style={styles.title}>Enter Your Birth Date</Text>
+          <Text style={typography.h2}>Enter Your Birth Date</Text>
         </View>
 
         <Card>
-          <Text style={styles.label}>Birth Date</Text>
+          <Text style={[typography.label, { marginBottom: Spacing.sm }]}>Birth Date</Text>
           {Platform.OS === 'ios' && (
             <>
-              <View style={styles.dateDisplay}>
-                <Text style={styles.dateText}>
+              <View style={[styles.dateDisplay, { backgroundColor: colors.background }]}>
+                <Text style={[typography.h3, { color: colors.primary }]}>
                   {birthDate.toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -79,6 +81,7 @@ export default function Calculator() {
                   display="spinner"
                   onChange={handleDateChange}
                   maximumDate={new Date()}
+                  textColor={colors.text}
                 />
               )}
             </>
@@ -92,6 +95,7 @@ export default function Calculator() {
                   display="default"
                   onChange={handleDateChange}
                   maximumDate={new Date()}
+                  textColor={colors.text}
                 />
               )}
               <Button
@@ -108,7 +112,7 @@ export default function Calculator() {
         </Card>
 
         <Card style={styles.card}>
-          <Text style={styles.description}>
+          <Text style={typography.body}>
             Your Nine Star Ki profile will be calculated based on your birth date according to the traditional solar calendar system.
           </Text>
         </Card>
@@ -122,7 +126,7 @@ export default function Calculator() {
         {isCalculating && (
           <ActivityIndicator
             size="large"
-            color={Colors.primary}
+            color={colors.primary}
             style={styles.spinner}
           />
         )}
@@ -134,32 +138,22 @@ export default function Calculator() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: Spacing.md,
+    paddingHorizontal: Spacing.md,
+    paddingBottom: Spacing.md,
   },
   header: {
     alignItems: 'center',
     marginVertical: Spacing.lg,
   },
-  title: Typography.h2,
-  label: {
-    ...Typography.label,
-    marginBottom: Spacing.sm,
-  },
   dateDisplay: {
     padding: Spacing.md,
-    backgroundColor: Colors.background,
     borderRadius: 8,
     marginBottom: Spacing.md,
     alignItems: 'center',
   },
-  dateText: {
-    ...Typography.h3,
-    color: Colors.primary,
-  },
   card: {
     marginVertical: Spacing.md,
   },
-  description: Typography.body,
   spinner: {
     marginVertical: Spacing.lg,
   },

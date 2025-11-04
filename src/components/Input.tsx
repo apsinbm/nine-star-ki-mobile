@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, TextInput, Text, StyleSheet, ViewStyle } from 'react-native';
-import { Colors } from '../theme/colors';
+import { useTheme } from '../context/ThemeContext';
 import { Spacing } from '../theme/spacing';
 
 interface InputProps {
@@ -21,21 +21,27 @@ export default function Input({
   style,
 }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const { colors } = useTheme();
 
   return (
     <View style={[styles.container, style]}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label, { color: colors.text }]}>{label}</Text>
       <TextInput
         style={[
           styles.input,
-          !editable && styles.disabled,
-          isFocused && styles.focused,
+          {
+            borderColor: isFocused ? colors.accent : colors.border,
+            backgroundColor: isFocused ? colors.accentLight : colors.background,
+            color: colors.text,
+            borderWidth: isFocused ? 2 : 1,
+          },
+          !editable && { backgroundColor: colors.surface, color: colors.textSecondary, opacity: 0.6 },
         ]}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         editable={editable}
-        placeholderTextColor={Colors.textSecondary}
+        placeholderTextColor={colors.textSecondary}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
@@ -50,25 +56,15 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 14,
     fontWeight: '600',
-    color: Colors.text,
     marginBottom: Spacing.sm,
+    lineHeight: 20,
   },
   input: {
-    borderWidth: 1,
-    borderColor: Colors.border,
     borderRadius: 8,
     paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.sm,
+    paddingVertical: Spacing.md,
     fontSize: 16,
-    color: Colors.text,
-  },
-  disabled: {
-    backgroundColor: Colors.surface,
-    color: Colors.textSecondary,
-  },
-  focused: {
-    borderWidth: 2,
-    borderColor: Colors.accent,
-    backgroundColor: Colors.surface,
+    lineHeight: 24,
+    minHeight: 48,
   },
 });

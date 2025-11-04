@@ -1,15 +1,18 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import { SafeArea, Button, Card, StarCircle } from '../src/components';
 import { Colors, StarColors } from '../src/theme/colors';
-import { Typography } from '../src/theme/typography';
+import { Typography, getTypography } from '../src/theme/typography';
 import { Spacing } from '../src/theme/spacing';
+import { useTheme } from '../src/context/ThemeContext';
 import { getStarMetadata, getCombination } from '../lib/data';
 import { NineStarKiProfile } from '../types';
 
 export default function Results() {
   const router = useRouter();
   const params = useLocalSearchParams();
+  const { colors } = useTheme();
+  const typography = getTypography(colors);
 
   let profile: NineStarKiProfile | null = null;
 
@@ -25,7 +28,7 @@ export default function Results() {
     return (
       <SafeArea>
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>Error: Profile data not found</Text>
+          <Text style={[typography.h3, { color: Colors.error }]}>Error: Profile data not found</Text>
         </View>
       </SafeArea>
     );
@@ -41,11 +44,17 @@ export default function Results() {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
+  const openExternalLink = (url: string) => {
+    Linking.openURL(url).catch(() => {
+      console.error('Failed to open URL:', url);
+    });
+  };
+
   return (
     <SafeArea>
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
         <View style={styles.header}>
-          <Text style={styles.title}>Your Nine Star Ki Profile</Text>
+          <Text style={typography.h1}>Your Nine Star Ki Profile</Text>
         </View>
 
         {/* Three Stars Display */}
@@ -53,81 +62,107 @@ export default function Results() {
           <View style={styles.starsContainer}>
             <View style={styles.starColumn}>
               <StarCircle star={profile.yearStar} label="Principal" />
-              <Text style={styles.starLabel}>{yearStarMeta.name}</Text>
+              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{yearStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.xs }]}>Your Main Number</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.monthStar} label="Month" />
-              <Text style={styles.starLabel}>{monthStarMeta.name}</Text>
+              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{monthStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.xs }]}>Your Emotional Self</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.energeticStar} label="Energetic" />
-              <Text style={styles.starLabel}>{energeticStarMeta.name}</Text>
+              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{energeticStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.xs }]}>Your Life Challenge</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text }]}>& Your True Calling</Text>
             </View>
           </View>
         </Card>
 
         {/* Birth Date Info */}
         <Card>
-          <Text style={styles.sectionTitle}>Birth Information</Text>
-          <Text style={styles.infoText}>
+          <Text style={typography.h3}>Birth Information</Text>
+          <Text style={[typography.body, { marginTop: Spacing.sm }]}>
             Birth Date: {formatDate(profile.birthDate)}
           </Text>
         </Card>
 
         {/* Star Details */}
         <Card>
-          <Text style={styles.sectionTitle}>Principal Star Details</Text>
-          <Text style={styles.subtitle}>{yearStarMeta.description}</Text>
-          <Text style={styles.label}>Element:</Text>
-          <Text style={styles.description}>{yearStarMeta.element}</Text>
-          <Text style={styles.label}>Direction:</Text>
-          <Text style={styles.description}>{yearStarMeta.direction}</Text>
-          <Text style={styles.label}>Characteristics:</Text>
+          <Text style={typography.h3}>Principal Star Details</Text>
+          <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{yearStarMeta.description}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{yearStarMeta.element}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{yearStarMeta.direction}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
           {yearStarMeta.characteristics.map((char, idx) => (
-            <Text key={idx} style={styles.bullet}>• {char}</Text>
+            <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
 
         <Card>
-          <Text style={styles.sectionTitle}>Month Star Details</Text>
-          <Text style={styles.subtitle}>{monthStarMeta.description}</Text>
-          <Text style={styles.label}>Element:</Text>
-          <Text style={styles.description}>{monthStarMeta.element}</Text>
-          <Text style={styles.label}>Direction:</Text>
-          <Text style={styles.description}>{monthStarMeta.direction}</Text>
-          <Text style={styles.label}>Characteristics:</Text>
+          <Text style={typography.h3}>Month Star Details</Text>
+          <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{monthStarMeta.description}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{monthStarMeta.element}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{monthStarMeta.direction}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
           {monthStarMeta.characteristics.map((char, idx) => (
-            <Text key={idx} style={styles.bullet}>• {char}</Text>
+            <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
 
         <Card>
-          <Text style={styles.sectionTitle}>Energetic Star Details</Text>
-          <Text style={styles.subtitle}>{energeticStarMeta.description}</Text>
-          <Text style={styles.label}>Element:</Text>
-          <Text style={styles.description}>{energeticStarMeta.element}</Text>
-          <Text style={styles.label}>Direction:</Text>
-          <Text style={styles.description}>{energeticStarMeta.direction}</Text>
-          <Text style={styles.label}>Characteristics:</Text>
+          <Text style={typography.h3}>Energetic Star Details</Text>
+          <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{energeticStarMeta.description}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{energeticStarMeta.element}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Direction:</Text>
+          <Text style={[typography.body, { lineHeight: 24 }]}>{energeticStarMeta.direction}</Text>
+          <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Characteristics:</Text>
           {energeticStarMeta.characteristics.map((char, idx) => (
-            <Text key={idx} style={styles.bullet}>• {char}</Text>
+            <Text key={idx} style={[typography.body, { marginLeft: Spacing.md, marginVertical: Spacing.xs }]}>• {char}</Text>
           ))}
         </Card>
 
         {combination && (
           <Card>
-            <Text style={styles.sectionTitle}>Your Combined Profile</Text>
-            <Text style={styles.label}>In Healthy Expression:</Text>
-            <Text style={styles.description}>{combination.healthy}</Text>
-            <Text style={[styles.label, { marginTop: Spacing.md }]}>Potential Challenges:</Text>
-            <Text style={styles.description}>{combination.unhealthy}</Text>
+            <Text style={typography.h3}>Your Combined Profile</Text>
+            <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>In Healthy Expression:</Text>
+            <Text style={[typography.body, { lineHeight: 24 }]}>{combination.healthy}</Text>
+            <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Potential Challenges:</Text>
+            <Text style={[typography.body, { lineHeight: 24 }]}>{combination.unhealthy}</Text>
           </Card>
         )}
+
+        <Card>
+          <Text style={typography.h3}>Explore More</Text>
+          <Text style={[typography.body, { marginVertical: Spacing.sm, lineHeight: 24 }]}>
+            Interested in deepening your understanding and creating space for personal growth? Visit Make Space For More to discover tools and insights that support your journey.
+          </Text>
+          <TouchableOpacity
+            onPress={() => openExternalLink('https://www.makespaceformore.com')}
+            style={[styles.linkButton, { backgroundColor: colors.primary }]}
+            activeOpacity={0.8}
+          >
+            <Text style={[typography.label, { color: colors.background, textAlign: 'center', fontWeight: '600', fontSize: 16 }]}>
+              Learn More →
+            </Text>
+          </TouchableOpacity>
+        </Card>
 
         <Button
           title="Calculate Another Profile"
           onPress={() => router.push('/calculator')}
           variant="primary"
+        />
+        <Button
+          title="Home"
+          onPress={() => router.push('/')}
+          variant="secondary"
+          style={styles.homeButton}
         />
       </ScrollView>
     </SafeArea>
@@ -137,7 +172,11 @@ export default function Results() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: Spacing.md,
+    paddingHorizontal: Spacing.md,
+    paddingBottom: Spacing.md,
+  },
+  homeButton: {
+    marginTop: Spacing.sm,
   },
   header: {
     alignItems: 'center',
@@ -192,5 +231,20 @@ const styles = StyleSheet.create({
     ...Typography.body,
     marginLeft: Spacing.md,
     marginVertical: Spacing.xs,
+  },
+  descriptiveLabel: {
+    ...Typography.label,
+    fontSize: 11,
+    fontWeight: '500',
+    textAlign: 'center',
+    lineHeight: 15,
+  },
+  linkButton: {
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: 12,
+    marginVertical: Spacing.md,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
