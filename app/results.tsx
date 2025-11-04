@@ -62,15 +62,16 @@ export default function Results() {
           <View style={styles.starsContainer}>
             <View style={styles.starColumn}>
               <StarCircle star={profile.yearStar} label="Principal" />
-              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{yearStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Main Number</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.monthStar} label="Month" />
-              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{monthStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Emotional Self</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.energeticStar} label="Energetic" />
-              <Text style={[typography.label, { marginTop: Spacing.sm, textAlign: 'center' }]}>{energeticStarMeta.name}</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.md }]}>Your Life Challenge</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text }]}>& Your True Calling</Text>
             </View>
           </View>
         </Card>
@@ -85,7 +86,7 @@ export default function Results() {
 
         {/* Star Details */}
         <Card>
-          <Text style={typography.h3}>Principal Star Details</Text>
+          <Text style={typography.h3}>Your Main Number Details</Text>
           <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{yearStarMeta.description}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{yearStarMeta.element}</Text>
@@ -98,7 +99,7 @@ export default function Results() {
         </Card>
 
         <Card>
-          <Text style={typography.h3}>Month Star Details</Text>
+          <Text style={typography.h3}>Your Emotional Self Details</Text>
           <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{monthStarMeta.description}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{monthStarMeta.element}</Text>
@@ -111,7 +112,8 @@ export default function Results() {
         </Card>
 
         <Card>
-          <Text style={typography.h3}>Energetic Star Details</Text>
+          <Text style={typography.h3}>Your Life Challenge &</Text>
+          <Text style={typography.h3}>Your True Calling Details</Text>
           <Text style={[typography.h4, { color: colors.primary, marginVertical: Spacing.sm }]}>{energeticStarMeta.description}</Text>
           <Text style={[typography.label, { marginTop: Spacing.md, marginBottom: Spacing.sm, fontWeight: '600' }]}>Element:</Text>
           <Text style={[typography.body, { lineHeight: 24 }]}>{energeticStarMeta.element}</Text>
