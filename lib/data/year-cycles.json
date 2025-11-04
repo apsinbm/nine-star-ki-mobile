@@ -1,0 +1,74 @@
+[
+  {
+    "number": 1,
+    "name": "Dream and Regenerate",
+    "season": "Winter",
+    "keywords": ["Rest", "Rebirth", "Imagination", "Intuition"],
+    "theme": "Begin a new cycle by turning inward, restoring energy, and envisioning the future.",
+    "guidance": "Pause active pursuits. Focus on creativity, study, and emotional renewal. Avoid forcing outcomes."
+  },
+  {
+    "number": 2,
+    "name": "Organize and Prepare",
+    "season": "Early Spring",
+    "keywords": ["Planning", "Foundation", "Support", "Patience"],
+    "theme": "Lay the groundwork for your dreams. Gather allies and resources.",
+    "guidance": "Structure routines, strengthen relationships, and prepare for expansion next year."
+  },
+  {
+    "number": 3,
+    "name": "Take Action and Grow",
+    "season": "Spring",
+    "keywords": ["Momentum", "Creativity", "Expression", "Opportunity"],
+    "theme": "Energy surges forward. Express ideas boldly and take tangible steps.",
+    "guidance": "Pursue new ventures but stay disciplined; avoid impulsive moves."
+  },
+  {
+    "number": 4,
+    "name": "Adapt and Navigate Change",
+    "season": "Late Spring",
+    "keywords": ["Flexibility", "Learning", "Mentorship", "Influence"],
+    "theme": "Unpredictability tests stability. Growth continues through adaptability.",
+    "guidance": "Stay steady, communicate clearly, and welcome mentors who appear."
+  },
+  {
+    "number": 5,
+    "name": "Center and Transform",
+    "season": "Summer",
+    "keywords": ["Change", "Power", "Fulfillment", "Turning Point"],
+    "theme": "Major shifts bring both endings and powerful beginnings.",
+    "guidance": "Stay centered, care for health, and avoid rash relocation or commitments."
+  },
+  {
+    "number": 6,
+    "name": "Consolidate Power and Purpose",
+    "season": "Late Summer",
+    "keywords": ["Authority", "Responsibility", "Achievement", "Reflection"],
+    "theme": "Harvest time—step into leadership and refine your calling.",
+    "guidance": "Accept recognition but remain humble. Reflect on what truly matters."
+  },
+  {
+    "number": 7,
+    "name": "Celebrate and Appreciate",
+    "season": "Autumn",
+    "keywords": ["Joy", "Beauty", "Gratitude", "Relationships"],
+    "theme": "Enjoy rewards, cultivate grace, and share abundance.",
+    "guidance": "Travel, celebrate, and enjoy art. Beware of withdrawing into scarcity thinking."
+  },
+  {
+    "number": 8,
+    "name": "Transform Within",
+    "season": "Late Autumn",
+    "keywords": ["Introspection", "Healing", "Metamorphosis", "Patience"],
+    "theme": "Inner transformation and quiet regeneration unfold beneath the surface.",
+    "guidance": "Slow down, review priorities, meditate, and avoid major new commitments."
+  },
+  {
+    "number": 9,
+    "name": "Complete and Illuminate",
+    "season": "Early Winter",
+    "keywords": ["Closure", "Visibility", "Cleansing", "Transition"],
+    "theme": "Endings and illumination lead to renewal. Prepare for the next cycle.",
+    "guidance": "Finish projects, release clutter, and step into the public eye with authenticity."
+  }
+]

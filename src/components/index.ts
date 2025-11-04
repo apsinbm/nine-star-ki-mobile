@@ -4,3 +4,4 @@ export { default as StarCircle } from './StarCircle';
 export { default as Input } from './Input';
 export { default as SafeArea } from './SafeArea';
 export { default as ThemeToggle } from './ThemeToggle';
+export { YearCycleCard } from './YearCycleCard';

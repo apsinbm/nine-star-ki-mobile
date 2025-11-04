@@ -1,11 +1,12 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ScrollView, View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
-import { SafeArea, Button, Card, StarCircle } from '../src/components';
+import { SafeArea, Button, Card, StarCircle, YearCycleCard } from '../src/components';
 import { Colors, StarColors } from '../src/theme/colors';
 import { Typography, getTypography } from '../src/theme/typography';
 import { Spacing } from '../src/theme/spacing';
 import { useTheme } from '../src/context/ThemeContext';
 import { getStarMetadata, getCombination } from '../lib/data';
+import { getCurrentYearCycle } from '../lib/calculator/year-cycle-calculator';
 import { NineStarKiProfile } from '../types';
 
 export default function Results() {
@@ -38,6 +39,9 @@ export default function Results() {
   const monthStarMeta = getStarMetadata(profile.monthStar);
   const energeticStarMeta = getStarMetadata(profile.energeticStar);
   const combination = getCombination(profile.yearStar, profile.monthStar, profile.energeticStar);
+
+  // Get the current year cycle for the user
+  const currentYearCycle = getCurrentYearCycle(profile.yearStar, new Date());
 
   const formatDate = (dateString: string | Date) => {
     const date = typeof dateString === 'string' ? new Date(dateString) : dateString;
@@ -134,6 +138,21 @@ export default function Results() {
             <Text style={[typography.body, { lineHeight: 24 }]}>{combination.unhealthy}</Text>
           </Card>
         )}
+
+        {/* Current Year Cycle */}
+        <View style={styles.yearCycleSection}>
+          <Text style={[typography.h2, { textAlign: 'center', marginBottom: Spacing.md, color: colors.text }]}>
+            Your Current Year Cycle
+          </Text>
+          <Text style={[typography.body, { textAlign: 'center', marginBottom: Spacing.lg, color: colors.textSecondary, lineHeight: 24 }]}>
+            Each year, your life moves through a distinct rhythm in a repeating nine-year cycle that begins near February 4 (Li Chun). As one energy fades and another rises, awareness of this flow helps you plan actions and rest in harmony with natural timing.
+          </Text>
+          <YearCycleCard
+            cycle={currentYearCycle}
+            showSolarYear={true}
+            solarYear={profile.solarYear}
+          />
+        </View>
 
         <Card>
           <Text style={typography.h3}>Explore More</Text>
@@ -244,5 +263,9 @@ const styles = StyleSheet.create({
     marginVertical: Spacing.md,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  yearCycleSection: {
+    marginTop: Spacing.lg,
+    marginBottom: Spacing.lg,
   },
 });

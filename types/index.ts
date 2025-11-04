@@ -25,3 +25,9 @@ export type {
   ConfidenceScore,
   ConfidenceBreakdown,
 } from './nine-star-ki'
+
+export type {
+  YearCycle,
+  YearCycleInfo,
+  YearCycleTimeline,
+} from './year-cycles'
