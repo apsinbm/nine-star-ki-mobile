@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/Thumb.png",
     "userInterfaceStyle": "automatic",
+    "privacy": "https://raw.githubusercontent.com/apsinbm/nine-star-ki-mobile/master/PRIVACY.md",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
