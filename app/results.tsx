@@ -66,16 +66,16 @@ export default function Results() {
           <View style={styles.starsContainer}>
             <View style={styles.starColumn}>
               <StarCircle star={profile.yearStar} />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Main Number</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Main Number</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.monthStar} />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Emotional Self</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Emotional Self</Text>
             </View>
             <View style={styles.starColumn}>
               <StarCircle star={profile.energeticStar} />
-              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Your Life Challenge</Text>
-              <Text style={[styles.descriptiveLabel, { color: colors.text }]}>& Your True Calling</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text, marginTop: Spacing.sm }]}>Life Challenge</Text>
+              <Text style={[styles.descriptiveLabel, { color: colors.text }]}>& True Calling</Text>
             </View>
           </View>
         </Card>
@@ -145,7 +145,7 @@ export default function Results() {
             Your Current Year Cycle
           </Text>
           <Text style={[typography.body, { textAlign: 'center', marginBottom: Spacing.lg, color: colors.textSecondary, lineHeight: 24 }]}>
-            Each year, your life moves through a distinct rhythm in a repeating nine-year cycle that begins near February 4 (Li Chun). As one energy fades and another rises, awareness of this flow helps you plan actions and rest in harmony with natural timing.
+            Each year, your life moves through a distinct rhythm in a repeating nine-year cycle that begins near February 4. As one energy fades and another rises, awareness of this flow helps you plan actions and rest in harmony with natural timing.
           </Text>
           <YearCycleCard
             cycle={currentYearCycle}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, Pressable } from 'react-native';
-import { useLocalSearchParams, Stack, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../src/context/ThemeContext';
 import { SeasonColors, DarkSeasonColors } from '../src/theme/colors';
@@ -46,40 +46,31 @@ export default function YearCycleDetailScreen() {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-      <Stack.Screen
-        options={{
-          headerShown: true,
-          title: year,
-          headerStyle: { backgroundColor: colors.surface },
-          headerTintColor: colors.text,
-          headerShadowVisible: false,
-          headerLeft: () => (
-            <Pressable
-              onPress={() => router.back()}
-              style={({ pressed }) => ({
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 16,
-                opacity: pressed ? 0.5 : 1,
-              })}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            >
-              <Ionicons
-                name="chevron-back"
-                size={24}
-                color={colors.text}
-              />
-              <Text style={{
-                color: colors.text,
-                fontSize: 17,
-                marginLeft: 4,
-              }}>
-                Back
-              </Text>
-            </Pressable>
-          ),
-        }}
-      />
+      <View style={[styles.customHeader, { backgroundColor: colors.background }]}>
+        <Pressable
+          onPress={() => router.back()}
+          style={({ pressed }) => ({
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: Spacing.md,
+            opacity: pressed ? 0.5 : 1,
+          })}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <Ionicons
+            name="chevron-back"
+            size={24}
+            color={colors.text}
+          />
+          <Text style={{
+            color: colors.text,
+            fontSize: 17,
+            marginLeft: 4,
+          }}>
+            Back
+          </Text>
+        </Pressable>
+      </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}
@@ -181,6 +172,9 @@ export default function YearCycleDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  customHeader: {
+    paddingTop: Spacing.xs,
   },
   scrollContent: {
     paddingBottom: Spacing.xl,

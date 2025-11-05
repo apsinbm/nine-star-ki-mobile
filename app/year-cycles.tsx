@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, FlatList, StyleSheet, SafeAreaView, Pressable } from 'react-native';
-import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { NineStarKiProfile } from '../types/nine-star-ki';
 import { getAllYearCycles, getCurrentSolarYear } from '../lib/calculator/year-cycle-calculator';
@@ -48,14 +48,31 @@ export default function YearCyclesScreen() {
   if (!profile) {
     return (
       <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-        <Stack.Screen
-          options={{
-            title: 'Year Cycles',
-            headerStyle: { backgroundColor: colors.surface },
-            headerTintColor: colors.text,
-            headerShadowVisible: false,
-          }}
-        />
+        <View style={[styles.customHeader, { backgroundColor: colors.background }]}>
+          <Pressable
+            onPress={() => router.back()}
+            style={({ pressed }) => ({
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: Spacing.md,
+              opacity: pressed ? 0.5 : 1,
+            })}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <Ionicons
+              name="chevron-back"
+              size={24}
+              color={colors.text}
+            />
+            <Text style={{
+              color: colors.text,
+              fontSize: 17,
+              marginLeft: 4,
+            }}>
+              Back
+            </Text>
+          </Pressable>
+        </View>
         <View style={styles.errorContainer}>
           <Text style={[typography.body, { color: colors.text }]}>
             Error: Profile data not found
@@ -67,40 +84,31 @@ export default function YearCyclesScreen() {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-      <Stack.Screen
-        options={{
-          headerShown: true,
-          title: 'Yearly Cycles',
-          headerStyle: { backgroundColor: colors.surface },
-          headerTintColor: colors.text,
-          headerShadowVisible: false,
-          headerLeft: () => (
-            <Pressable
-              onPress={() => router.back()}
-              style={({ pressed }) => ({
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 16,
-                opacity: pressed ? 0.5 : 1,
-              })}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            >
-              <Ionicons
-                name="chevron-back"
-                size={24}
-                color={colors.text}
-              />
-              <Text style={{
-                color: colors.text,
-                fontSize: 17,
-                marginLeft: 4,
-              }}>
-                Back
-              </Text>
-            </Pressable>
-          ),
-        }}
-      />
+      <View style={[styles.customHeader, { backgroundColor: colors.background }]}>
+        <Pressable
+          onPress={() => router.back()}
+          style={({ pressed }) => ({
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: Spacing.md,
+            opacity: pressed ? 0.5 : 1,
+          })}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <Ionicons
+            name="chevron-back"
+            size={24}
+            color={colors.text}
+          />
+          <Text style={{
+            color: colors.text,
+            fontSize: 17,
+            marginLeft: 4,
+          }}>
+            Back
+          </Text>
+        </Pressable>
+      </View>
 
       {/* Header description */}
       <View style={[styles.headerContainer, { backgroundColor: colors.surface }]}>
@@ -166,6 +174,9 @@ export default function YearCyclesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  customHeader: {
+    paddingTop: Spacing.xs,
   },
   headerContainer: {
     paddingHorizontal: Spacing.lg,
